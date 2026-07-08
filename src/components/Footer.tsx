@@ -16,7 +16,7 @@ export function Footer() {
     <footer id="app-footer" className="w-full bg-slate-900 text-slate-400 py-12 px-6 mt-20 border-t border-slate-800 text-center text-xs relative z-30">
       <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
         <div>
-          <span className="font-bold text-slate-300">Invisible Character &amp; Formatting Cleaner</span>
+          <span className="font-bold text-slate-300">Dr Wamark &mdash; AI Text Watermark Remover</span>
           <p className="mt-1 text-slate-500">
             &copy; {new Date().getFullYear()} Secure Client-Side Text Sanitizer. All rights reserved.
           </p>
@@ -116,7 +116,7 @@ export function Footer() {
                 <>
                   <p className="font-semibold text-slate-800 text-base">Standard Terms of Use and Licensing</p>
                   <p>
-                    Welcome to the Invisible Character &amp; Formatting Cleaner applet. By accessing and using our tools, you agree to comply with the terms and conditions outlined below.
+                    Welcome to the Dr Wamark platform. By accessing and using our tools, you agree to comply with the terms and conditions outlined below.
                   </p>
                   <h4 className="font-bold text-slate-800">1. Permitted Personal &amp; Professional Use</h4>
                   <p>

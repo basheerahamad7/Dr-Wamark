@@ -17,12 +17,12 @@ export function Header() {
 
         {/* Title */}
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-3">
-          Invisible Character &amp; <span className="text-blue-400">Formatting Cleaner</span>
+          <span className="text-blue-400">Dr Wamark</span> &mdash; AI Text Watermark Remover
         </h1>
 
         {/* Subtitle */}
         <p className="text-base md:text-lg text-slate-300 max-w-2xl font-normal leading-relaxed mb-6">
-          Sanitize texts instantly. Strip hidden Unicode trackers, zero-width spaces, and AI watermarks entirely on your device with maximum speed and security.
+          The ultimate zero-width space remover and formatting sanitizer. Instantly strip hidden Unicode trackers, fingerprint signatures, and AI watermarks 100% privately on your device.
         </p>
 
         {/* Feature Highlights */}
