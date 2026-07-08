@@ -1,0 +1,6 @@
+{
+  "name": "Invisible Character & Formatting Cleaner",
+  "description": "Strip hidden Unicode characters, zero-width spaces, and metadata tracking markers from text client-side for privacy and speed.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
