@@ -17,7 +17,7 @@ export function Header() {
 
         {/* Title */}
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-3">
-          <span className="text-blue-400">Dr Wamark</span> &mdash; AI Text Watermark Remover
+          <span className="text-blue-400">Dr Watermark</span> &mdash; AI Text Watermark Remover
         </h1>
 
         {/* Subtitle */}

@@ -91,7 +91,7 @@ export function Articles() {
               </li>
             </ul>
             <p className="mt-4">
-              Using a robust, localized text cleaner allows writers, software engineers, and researchers to completely sanitize their copy. The <strong>Dr Wamark AI Text Watermark Remover and Formatting Cleaner</strong> processes your input entirely in your browser. Since not a single character is transmitted to an external server, your sensitive documentation remains 100% confidential.
+              Using a robust, localized text cleaner allows writers, software engineers, and researchers to completely sanitize their copy. The <strong>Dr Watermark AI Text Watermark Remover and Formatting Cleaner</strong> processes your input entirely in your browser. Since not a single character is transmitted to an external server, your sensitive documentation remains 100% confidential.
             </p>
           </div>
         </article>

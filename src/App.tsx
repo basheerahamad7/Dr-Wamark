@@ -14,6 +14,7 @@ import { AdPlaceholder } from "./components/AdPlaceholder";
 import { Metrics } from "./components/Metrics";
 import { Articles } from "./components/Articles";
 import { Footer } from "./components/Footer";
+import SeoHub from "./components/SeoHub";
 import { CleanOptions, CleanResult } from "./types";
 import { cleanText, HIDDEN_MARKERS } from "./utils/cleaner";
 
@@ -21,12 +22,14 @@ export default function App() {
   const [inputText, setInputText] = useState<string>("");
   const [cleanedText, setCleanedText] = useState<string>("");
   const [copied, setCopied] = useState<boolean>(false);
+  const [seoHubOpen, setSeoHubOpen] = useState<boolean>(false);
   const [options, setOptions] = useState<CleanOptions>({
     removeZeroWidth: true,
     removeHiddenFormat: true,
     normalizeWhitespace: true,
     trimTrailing: true,
     normalizeHomoglyphs: true,
+    expertNormalization: true,
   });
   const [metricsResult, setMetricsResult] = useState<CleanResult | null>(null);
 
@@ -280,6 +283,23 @@ export default function App() {
                       <p className="text-[10px] text-slate-400 font-normal">Bypasses spoofing, tracking, and filters.</p>
                     </div>
                   </label>
+
+                  <label className="flex items-start gap-2.5 text-xs text-slate-600 font-medium cursor-pointer hover:text-slate-800 transition col-span-1 sm:col-span-2 md:col-span-3 border-t border-slate-200/60 pt-2.5 mt-1">
+                    <input
+                      type="checkbox"
+                      checked={options.expertNormalization}
+                      onChange={(e) => setOptions({ ...options, expertNormalization: e.target.checked })}
+                      className="mt-0.5 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500/20"
+                    />
+                    <div>
+                      <span className="flex items-center gap-1 font-bold text-slate-700">
+                        ✨ Expert Text Normalizer &amp; Publication Rewriter
+                      </span>
+                      <p className="text-[10px] text-slate-500 font-normal mt-0.5">
+                        Transforms draft/AI text into clean, natural, publication-ready plain text. Automatically strips HTML, markdown bold/headings/links, removes unnecessary blank lines, merges short paragraphs, and humanizes robotic phrases case-by-case while preserving meaning.
+                      </p>
+                    </div>
+                  </label>
                 </div>
               </div>
 
@@ -322,7 +342,22 @@ export default function App() {
       </main>
 
       {/* Footer & mandatory policies modals */}
-      <Footer />
+      <Footer onOpenSeoHub={() => setSeoHubOpen(true)} />
+
+      {/* SEO Strategy Hub Portal */}
+      <SeoHub isOpen={seoHubOpen} onClose={() => setSeoHubOpen(false)} />
+
+      {/* Elegant Floating Action Trigger Button */}
+      <button
+        onClick={() => setSeoHubOpen(true)}
+        className="fixed bottom-6 right-6 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white p-3.5 rounded-full shadow-2xl z-40 transition-all duration-300 hover:scale-110 flex items-center gap-2 group cursor-pointer border border-blue-500/20"
+        title="Open SEO Strategy Hub"
+      >
+        <Sparkles className="w-5 h-5 animate-pulse" />
+        <span className="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 ease-out text-xs font-bold tracking-wider uppercase whitespace-nowrap">
+          SEO Strategy Hub
+        </span>
+      </button>
     </div>
   );
 }

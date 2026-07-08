@@ -4,6 +4,7 @@ export interface CleanOptions {
   normalizeWhitespace: boolean;
   trimTrailing: boolean;
   normalizeHomoglyphs: boolean;
+  expertNormalization: boolean;
 }
 
 export interface MarkerBreakdown {

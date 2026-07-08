@@ -1,6 +1,6 @@
 {
-  "name": "Dr Wamark",
-  "description": "Dr Wamark is a highly optimized client-side text sanitizer that strips hidden zero-width spaces, tracking symbols, and AI watermarks from text instantly.",
+  "name": "Dr Watermark",
+  "description": "Dr Watermark is a highly optimized client-side text sanitizer that strips hidden zero-width spaces, tracking symbols, and AI watermarks from text instantly.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

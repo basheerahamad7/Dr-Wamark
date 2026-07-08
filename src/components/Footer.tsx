@@ -1,7 +1,11 @@
 import { useState } from "react";
-import { Mail, Shield, BookOpen, UserCheck, X } from "lucide-react";
+import { Mail, Shield, BookOpen, UserCheck, X, Sparkles } from "lucide-react";
 
-export function Footer() {
+interface FooterProps {
+  onOpenSeoHub?: () => void;
+}
+
+export function Footer({ onOpenSeoHub }: FooterProps) {
   const [activeModal, setActiveModal] = useState<"privacy" | "terms" | "contact" | null>(null);
 
   const openModal = (type: "privacy" | "terms" | "contact") => {
@@ -16,7 +20,7 @@ export function Footer() {
     <footer id="app-footer" className="w-full bg-slate-900 text-slate-400 py-12 px-6 mt-20 border-t border-slate-800 text-center text-xs relative z-30">
       <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
         <div>
-          <span className="font-bold text-slate-300">Dr Wamark &mdash; AI Text Watermark Remover</span>
+          <span className="font-bold text-slate-300">Dr Watermark &mdash; AI Text Watermark Remover</span>
           <p className="mt-1 text-slate-500">
             &copy; {new Date().getFullYear()} Secure Client-Side Text Sanitizer. All rights reserved.
           </p>
@@ -45,6 +49,15 @@ export function Footer() {
           >
             Contact Us
           </button>
+          {onOpenSeoHub && (
+            <button
+              onClick={onOpenSeoHub}
+              className="hover:text-blue-400 font-bold text-blue-400 border border-blue-500/20 px-2.5 py-1 rounded-lg bg-blue-500/5 transition cursor-pointer flex items-center gap-1.5"
+            >
+              <Sparkles className="w-3.5 h-3.5 text-blue-400" />
+              SEO Strategy Hub
+            </button>
+          )}
         </nav>
       </div>
 
@@ -116,7 +129,7 @@ export function Footer() {
                 <>
                   <p className="font-semibold text-slate-800 text-base">Standard Terms of Use and Licensing</p>
                   <p>
-                    Welcome to the Dr Wamark platform. By accessing and using our tools, you agree to comply with the terms and conditions outlined below.
+                    Welcome to the Dr Watermark platform. By accessing and using our tools, you agree to comply with the terms and conditions outlined below.
                   </p>
                   <h4 className="font-bold text-slate-800">1. Permitted Personal &amp; Professional Use</h4>
                   <p>
