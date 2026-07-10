@@ -84,10 +84,13 @@ export function getKeywordDatabase(): Record<string, KeywordInfo[]> {
   const modifications = ['remove watermark', 'clear logo', 'erase stamp', 'strip metadata', 'compress size', 'upscale 4k', 'crop aspect ratio', 'background remover', 'face blur', 'sharpen pixels', 'detect tracking code'];
 
   // 1. Generate 300 Short-Tail Keywords
-  while (result.shortTail.length < 300) {
+  const suffixes = ['free', 'tool', 'online', 'app', 'software', 'website', 'generator', 'remover', 'cleaner', 'utility', 'converter', 'editor', 'clean', 'strip', 'pro'];
+  let shortTailSafety = 0;
+  while (result.shortTail.length < 300 && shortTailSafety < 10000) {
+    shortTailSafety++;
     const mod = modifications[Math.floor(Math.random() * modifications.length)];
     const subj = subjects[Math.floor(Math.random() * subjects.length)];
-    const suffix = Math.random() > 0.5 ? 'free' : 'tool';
+    const suffix = suffixes[Math.floor(Math.random() * suffixes.length)];
     const keyword = `${mod} ${subj} ${suffix}`.toLowerCase();
     
     if (!result.shortTail.some(k => k.keyword === keyword)) {
@@ -104,7 +107,9 @@ export function getKeywordDatabase(): Record<string, KeywordInfo[]> {
 
   // 2. Generate 300 Long-Tail Keywords
   const problems = ['without losing quality', 'without blur', 'safely for personal use', 'no signup required', 'high definition', 'in 1 click', 'for website optimization', 'privately on-device'];
-  while (result.longTail.length < 300) {
+  let longTailSafety = 0;
+  while (result.longTail.length < 300 && longTailSafety < 10000) {
+    longTailSafety++;
     const mod = modifications[Math.floor(Math.random() * modifications.length)];
     const subj = subjects[Math.floor(Math.random() * subjects.length)];
     const plat = platforms[Math.floor(Math.random() * platforms.length)];
@@ -125,7 +130,9 @@ export function getKeywordDatabase(): Record<string, KeywordInfo[]> {
 
   // 3. Generate 200 Informational Keywords
   const intros = ['understanding how to', 'the complete guide to', 'what is the legal limit to', 'why you should', 'how search engines handle'];
-  while (result.informational.length < 200) {
+  let infoSafety = 0;
+  while (result.informational.length < 200 && infoSafety < 10000) {
+    infoSafety++;
     const intro = intros[Math.floor(Math.random() * intros.length)];
     const mod = modifications[Math.floor(Math.random() * modifications.length)];
     const subj = subjects[Math.floor(Math.random() * subjects.length)];
@@ -145,7 +152,9 @@ export function getKeywordDatabase(): Record<string, KeywordInfo[]> {
 
   // 4. Generate 100 Commercial Keywords
   const qualifiers = ['vs', 'alternative', 'comparison', 'review', 'best choice', 'top rated', 'professional vs free'];
-  while (result.commercial.length < 100) {
+  let commSafety = 0;
+  while (result.commercial.length < 100 && commSafety < 10000) {
+    commSafety++;
     const mod = modifications[Math.floor(Math.random() * modifications.length)];
     const subj = subjects[Math.floor(Math.random() * subjects.length)];
     const qualifier = qualifiers[Math.floor(Math.random() * qualifiers.length)];
@@ -165,7 +174,9 @@ export function getKeywordDatabase(): Record<string, KeywordInfo[]> {
 
   // 5. Generate 100 Question-Based Keywords
   const questionWords = ['is it safe to', 'can I legally', 'how do developers', 'where is the hidden option to', 'why does Google require'];
-  while (result.questionBased.length < 100) {
+  let qSafety = 0;
+  while (result.questionBased.length < 100 && qSafety < 10000) {
+    qSafety++;
     const q = questionWords[Math.floor(Math.random() * questionWords.length)];
     const mod = modifications[Math.floor(Math.random() * modifications.length)];
     const subj = subjects[Math.floor(Math.random() * subjects.length)];

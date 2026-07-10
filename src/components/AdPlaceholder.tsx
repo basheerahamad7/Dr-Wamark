@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 interface AdPlaceholderProps {
   type: "top" | "in-between";
@@ -11,10 +11,18 @@ declare global {
 }
 
 export function AdPlaceholder({ type }: AdPlaceholderProps) {
+  const insRef = useRef<HTMLElement>(null);
+
   useEffect(() => {
     try {
-      if (typeof window !== "undefined") {
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
+      if (typeof window !== "undefined" && insRef.current) {
+        const isLoaded = insRef.current.getAttribute("data-adsbygoogle-status");
+        const hasPushed = insRef.current.getAttribute("data-ad-initialized");
+
+        if (!isLoaded && !hasPushed) {
+          insRef.current.setAttribute("data-ad-initialized", "true");
+          (window.adsbygoogle = window.adsbygoogle || []).push({});
+        }
       }
     } catch (e) {
       console.warn("AdSense layout initialization notice:", e);
@@ -41,6 +49,7 @@ export function AdPlaceholder({ type }: AdPlaceholderProps) {
       <div className="w-full flex items-center justify-center bg-slate-100 rounded-lg p-3 min-h-[120px]">
         {/* Render the specific Google AdSense Responsive Fluid Block */}
         <ins
+          ref={insRef}
           className="adsbygoogle"
           style={{ display: "block", width: "100%", minWidth: "250px" }}
           data-ad-format="fluid"

@@ -6,14 +6,28 @@ interface FooterProps {
 }
 
 export function Footer({ onOpenSeoHub }: FooterProps) {
-  const [activeModal, setActiveModal] = useState<"privacy" | "terms" | "contact" | null>(null);
+  const [activeModal, setActiveModal] = useState<"privacy" | "terms" | "contact" | null>(() => {
+    if (typeof window !== 'undefined') {
+      const path = window.location.pathname;
+      if (path === "/privacy") return "privacy";
+      if (path === "/terms") return "terms";
+      if (path === "/contact") return "contact";
+    }
+    return null;
+  });
 
   const openModal = (type: "privacy" | "terms" | "contact") => {
     setActiveModal(type);
+    if (typeof window !== 'undefined') {
+      window.history.pushState(null, '', `/${type}`);
+    }
   };
 
   const closeModal = () => {
     setActiveModal(null);
+    if (typeof window !== 'undefined') {
+      window.history.pushState(null, '', '/');
+    }
   };
 
   return (
@@ -54,8 +68,8 @@ export function Footer({ onOpenSeoHub }: FooterProps) {
               onClick={onOpenSeoHub}
               className="hover:text-blue-400 font-bold text-blue-400 border border-blue-500/20 px-2.5 py-1 rounded-lg bg-blue-500/5 transition cursor-pointer flex items-center gap-1.5"
             >
-              <Sparkles className="w-3.5 h-3.5 text-blue-400" />
-              SEO Strategy Hub
+              <BookOpen className="w-3.5 h-3.5 text-blue-400" />
+              Blog &amp; Helpful Guides
             </button>
           )}
         </nav>

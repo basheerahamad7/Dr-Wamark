@@ -1,0 +1,6 @@
+# Robots.txt for Dr Watermark
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://dr-watermark.in/sitemap.xml

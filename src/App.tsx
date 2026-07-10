@@ -33,6 +33,16 @@ export default function App() {
   });
   const [metricsResult, setMetricsResult] = useState<CleanResult | null>(null);
 
+  // Open SEO Hub automatically if landing on a /blog route
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const path = window.location.pathname;
+      if (path.startsWith('/blog')) {
+        setSeoHubOpen(true);
+      }
+    }
+  }, []);
+
   // Real-time detection state for warning indicators
   const [detectedCount, setDetectedCount] = useState<number>(0);
 
@@ -345,17 +355,25 @@ export default function App() {
       <Footer onOpenSeoHub={() => setSeoHubOpen(true)} />
 
       {/* SEO Strategy Hub Portal */}
-      <SeoHub isOpen={seoHubOpen} onClose={() => setSeoHubOpen(false)} />
+      <SeoHub 
+        isOpen={seoHubOpen} 
+        onClose={() => {
+          setSeoHubOpen(false);
+          if (typeof window !== 'undefined') {
+            window.history.pushState(null, '', '/');
+          }
+        }} 
+      />
 
       {/* Elegant Floating Action Trigger Button */}
       <button
         onClick={() => setSeoHubOpen(true)}
         className="fixed bottom-6 right-6 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white p-3.5 rounded-full shadow-2xl z-40 transition-all duration-300 hover:scale-110 flex items-center gap-2 group cursor-pointer border border-blue-500/20"
-        title="Open SEO Strategy Hub"
+        title="Open Blog & Guides"
       >
-        <Sparkles className="w-5 h-5 animate-pulse" />
+        <BookOpen className="w-5 h-5 animate-pulse" />
         <span className="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 ease-out text-xs font-bold tracking-wider uppercase whitespace-nowrap">
-          SEO Strategy Hub
+          Blog &amp; Guides
         </span>
       </button>
     </div>
