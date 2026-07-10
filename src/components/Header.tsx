@@ -22,7 +22,7 @@ export function Header() {
 
         {/* Subtitle */}
         <p className="text-base md:text-lg text-slate-300 max-w-2xl font-normal leading-relaxed mb-6">
-          The ultimate zero-width space remover and formatting sanitizer. Instantly strip hidden Unicode trackers, fingerprint signatures, and AI watermarks 100% privately on your device.
+          The ultimate zero-width space remover and formatting sanitizer. Instantly strip hidden Unicode trackers, fingerprint signatures, and AI watermarks 100% privately on your device. Whether you are looking for an advanced <strong>AI Text Watermark Remover</strong> or an easy-to-use <strong>AI text water remover</strong>, Dr Watermark handles it all in a single click.
         </p>
 
         {/* Feature Highlights */}
