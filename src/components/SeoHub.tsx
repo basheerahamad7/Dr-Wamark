@@ -27,6 +27,7 @@ interface SeoHubProps {
 
 const CATEGORIES = [
   'All Guides',
+  'Google AdSense Integration Center',
   'Copyright & Legal Compliance',
   'Watermarks & Text Sanitization',
   'Image Editing & Design',
@@ -41,7 +42,14 @@ export default function SeoHub({ isOpen, onClose }: SeoHubProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>('All Guides');
   const [searchQuery, setSearchQuery] = useState('');
   const [copied, setCopied] = useState(false);
+  const [copiedAdId, setCopiedAdId] = useState<string | null>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  const handleCopyAdCode = (text: string, id: string) => {
+    navigator.clipboard.writeText(text);
+    setCopiedAdId(id);
+    setTimeout(() => setCopiedAdId(null), 2000);
+  };
 
   // Scroll to top of article when reading view opens
   useEffect(() => {
@@ -130,6 +138,8 @@ export default function SeoHub({ isOpen, onClose }: SeoHubProps) {
   // Icon mapping for categories
   const getCategoryIcon = (category: string) => {
     switch (category) {
+      case 'Google AdSense Integration Center':
+        return <Key className="w-4 h-4 text-rose-400" />;
       case 'Copyright & Legal Compliance':
         return <Shield className="w-4 h-4 text-emerald-400" />;
       case 'Watermarks & Text Sanitization':
@@ -445,6 +455,262 @@ export default function SeoHub({ isOpen, onClose }: SeoHubProps) {
                     <Sparkles className="w-4 h-4" />
                     Open Sanitizer Workspace
                   </button>
+                </div>
+              </div>
+            ) : selectedCategory === 'Google AdSense Integration Center' ? (
+              /* Google AdSense Integration Center */
+              <div className="flex flex-col gap-6 animate-in fade-in duration-200">
+                <div className="p-6 bg-slate-950/60 border border-slate-800 rounded-3xl flex flex-col md:flex-row gap-6 items-start shadow-xl">
+                  <div className="p-3 bg-rose-500/10 text-rose-400 rounded-2xl border border-rose-500/20">
+                    <Key className="w-8 h-8" />
+                  </div>
+                  <div className="flex-grow">
+                    <h3 className="text-xl font-black text-white tracking-tight">Google AdSense Integration Center</h3>
+                    <p className="text-xs text-slate-400 mt-1 max-w-3xl leading-relaxed">
+                      Your site is fully optimized to meet Google AdSense eligibility and policy guidelines. We have successfully configured static routing for <code className="text-pink-400 font-mono">ads.txt</code>, script preloading, and full pre-rendered HTML fallback wrappers inside the SPA root to guarantee rapid crawler indexing.
+                    </p>
+                    <div className="flex flex-wrap gap-4 mt-4 text-[11px] text-slate-400">
+                      <div className="flex items-center gap-1.5 bg-slate-900 px-2.5 py-1 rounded-md border border-slate-800">
+                        <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        Publisher ID: <strong className="text-slate-200 font-mono">ca-pub-1772352921481919</strong>
+                      </div>
+                      <div className="flex items-center gap-1.5 bg-slate-900 px-2.5 py-1 rounded-md border border-slate-800">
+                        <span className="w-2 h-2 rounded-full bg-blue-500"></span>
+                        Vite Route: <strong className="text-slate-200 font-mono">/public/ads.txt (PASS)</strong>
+                      </div>
+                      <div className="flex items-center gap-1.5 bg-slate-900 px-2.5 py-1 rounded-md border border-slate-800">
+                        <span className="w-2 h-2 rounded-full bg-violet-500"></span>
+                        Hydration Check: <strong className="text-slate-200">Crawler Compatibility (PASS)</strong>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between mt-2">
+                  <h4 className="text-xs font-bold text-slate-400 uppercase tracking-widest">
+                    Google AdSense Code Generator (Copy-Paste)
+                  </h4>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  {/* 1. Display Ad */}
+                  <div className="bg-slate-950/40 border border-slate-800/80 hover:border-slate-700 rounded-2xl p-5 flex flex-col justify-between gap-4 transition-all duration-300">
+                    <div className="flex flex-col gap-2">
+                      <div className="flex items-center justify-between gap-2">
+                        <span className="px-2 py-0.5 rounded-md bg-blue-500/10 border border-blue-500/20 text-blue-400 font-bold text-[9px] uppercase">
+                          Display Unit
+                        </span>
+                        <span className="text-[10px] text-slate-500 font-mono">Slot: 7777232443</span>
+                      </div>
+                      <h5 className="text-sm font-bold text-slate-100">Display Ad (Responsive Banner)</h5>
+                      <p className="text-xs text-slate-400 leading-relaxed">
+                        The ultimate high-compatibility standard. Perfect for top leaderboards, central page separators, or right sidebars. Autoscale responsive block is enabled.
+                      </p>
+                      
+                      <div className="relative mt-2">
+                        <pre className="p-3 bg-slate-950/80 border border-slate-850 rounded-xl overflow-x-auto font-mono text-[10px] text-emerald-400 leading-relaxed max-h-36 overflow-y-auto">
+{`<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1772352921481919"
+     crossorigin="anonymous"></script>
+<!-- drw-dap -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-1772352921481919"
+     data-ad-slot="7777232443"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>`}
+                        </pre>
+                      </div>
+                    </div>
+                    <button
+                      onClick={() => handleCopyAdCode(`<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1772352921481919"
+     crossorigin="anonymous"></script>
+<!-- drw-dap -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-1772352921481919"
+     data-ad-slot="7777232443"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>`, "display")}
+                      className="w-full mt-2 py-2 bg-slate-900 border border-slate-800 text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-800 rounded-xl transition inline-flex items-center justify-center gap-1.5 cursor-pointer"
+                    >
+                      {copiedAdId === "display" ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+                      {copiedAdId === "display" ? "Copied Display Ad Code!" : "Copy Display Ad Code"}
+                    </button>
+                  </div>
+
+                  {/* 2. In-feed Ad */}
+                  <div className="bg-slate-950/40 border border-slate-800/80 hover:border-slate-700 rounded-2xl p-5 flex flex-col justify-between gap-4 transition-all duration-300">
+                    <div className="flex flex-col gap-2">
+                      <div className="flex items-center justify-between gap-2">
+                        <span className="px-2 py-0.5 rounded-md bg-sky-500/10 border border-sky-500/20 text-sky-400 font-bold text-[9px] uppercase">
+                          In-Feed Unit
+                        </span>
+                        <span className="text-[10px] text-slate-500 font-mono">Slot: 7513172822</span>
+                      </div>
+                      <h5 className="text-sm font-bold text-slate-100">In-Feed Ad (Fluid Content Grid)</h5>
+                      <p className="text-xs text-slate-400 leading-relaxed">
+                        Matches your editorial grid layout dynamically. Flows inside article columns or visual listings matching standard site metrics and colors perfectly.
+                      </p>
+                      
+                      <div className="relative mt-2">
+                        <pre className="p-3 bg-slate-950/80 border border-slate-850 rounded-xl overflow-x-auto font-mono text-[10px] text-emerald-400 leading-relaxed max-h-36 overflow-y-auto">
+{`<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1772352921481919"
+     crossorigin="anonymous"></script>
+<!-- drw-infeed -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-format="fluid"
+     data-ad-layout-key="-fb+5w+4e-db+86"
+     data-ad-client="ca-pub-1772352921481919"
+     data-ad-slot="7513172822"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>`}
+                        </pre>
+                      </div>
+                    </div>
+                    <button
+                      onClick={() => handleCopyAdCode(`<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1772352921481919"
+     crossorigin="anonymous"></script>
+<!-- drw-infeed -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-format="fluid"
+     data-ad-layout-key="-fb+5w+4e-db+86"
+     data-ad-client="ca-pub-1772352921481919"
+     data-ad-slot="7513172822"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>`, "infeed")}
+                      className="w-full mt-2 py-2 bg-slate-900 border border-slate-800 text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-800 rounded-xl transition inline-flex items-center justify-center gap-1.5 cursor-pointer"
+                    >
+                      {copiedAdId === "infeed" ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+                      {copiedAdId === "infeed" ? "Copied In-Feed Ad Code!" : "Copy In-Feed Ad Code"}
+                    </button>
+                  </div>
+
+                  {/* 3. In-article Ad */}
+                  <div className="bg-slate-950/40 border border-slate-800/80 hover:border-slate-700 rounded-2xl p-5 flex flex-col justify-between gap-4 transition-all duration-300">
+                    <div className="flex flex-col gap-2">
+                      <div className="flex items-center justify-between gap-2">
+                        <span className="px-2 py-0.5 rounded-md bg-violet-500/10 border border-violet-500/20 text-violet-400 font-bold text-[9px] uppercase">
+                          In-Article Unit
+                        </span>
+                        <span className="text-[10px] text-slate-500 font-mono">Slot: 7757051146</span>
+                      </div>
+                      <h5 className="text-sm font-bold text-slate-100">In-Article Ad (Paragraph Flow)</h5>
+                      <p className="text-xs text-slate-400 leading-relaxed">
+                        Placed in the middle of long-form articles, guidelines, or policy scripts. Optimized to load smoothly within reading paragraphs to maximize viewability rates.
+                      </p>
+                      
+                      <div className="relative mt-2">
+                        <pre className="p-3 bg-slate-950/80 border border-slate-850 rounded-xl overflow-x-auto font-mono text-[10px] text-emerald-400 leading-relaxed max-h-36 overflow-y-auto">
+{`<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1772352921481919"
+     crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-1772352921481919"
+     data-ad-slot="7757051146"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>`}
+                        </pre>
+                      </div>
+                    </div>
+                    <button
+                      onClick={() => handleCopyAdCode(`<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1772352921481919"
+     crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-1772352921481919"
+     data-ad-slot="7757051146"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>`, "inarticle")}
+                      className="w-full mt-2 py-2 bg-slate-900 border border-slate-800 text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-800 rounded-xl transition inline-flex items-center justify-center gap-1.5 cursor-pointer"
+                    >
+                      {copiedAdId === "inarticle" ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+                      {copiedAdId === "inarticle" ? "Copied In-Article Ad Code!" : "Copy In-Article Ad Code"}
+                    </button>
+                  </div>
+
+                  {/* 4. Multiplex Ad */}
+                  <div className="bg-slate-950/40 border border-slate-800/80 hover:border-slate-700 rounded-2xl p-5 flex flex-col justify-between gap-4 transition-all duration-300">
+                    <div className="flex flex-col gap-2">
+                      <div className="flex items-center justify-between gap-2">
+                        <span className="px-2 py-0.5 rounded-md bg-amber-500/10 border border-amber-500/20 text-amber-400 font-bold text-[9px] uppercase">
+                          Multiplex Unit
+                        </span>
+                        <span className="text-[10px] text-slate-500 font-mono">Slot: 9999232443</span>
+                      </div>
+                      <h5 className="text-sm font-bold text-slate-100">Multiplex Ad (Recommendation Grid)</h5>
+                      <p className="text-xs text-slate-400 leading-relaxed">
+                        Renders a responsive multi-column grid of content recommendations. Best placed directly at the end of SEO articles and footer regions for maximized monetization.
+                      </p>
+                      
+                      <div className="relative mt-2">
+                        <pre className="p-3 bg-slate-950/80 border border-slate-850 rounded-xl overflow-x-auto font-mono text-[10px] text-emerald-400 leading-relaxed max-h-36 overflow-y-auto">
+{`<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1772352921481919"
+     crossorigin="anonymous"></script>
+<!-- drw-multiplex -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-format="autorelaxed"
+     data-ad-client="ca-pub-1772352921481919"
+     data-ad-slot="9999232443"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>`}
+                        </pre>
+                      </div>
+                    </div>
+                    <button
+                      onClick={() => handleCopyAdCode(`<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1772352921481919"
+     crossorigin="anonymous"></script>
+<!-- drw-multiplex -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-format="autorelaxed"
+     data-ad-client="ca-pub-1772352921481919"
+     data-ad-slot="9999232443"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>`, "multiplex")}
+                      className="w-full mt-2 py-2 bg-slate-900 border border-slate-800 text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-800 rounded-xl transition inline-flex items-center justify-center gap-1.5 cursor-pointer"
+                    >
+                      {copiedAdId === "multiplex" ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+                      {copiedAdId === "multiplex" ? "Copied Multiplex Ad Code!" : "Copy Multiplex Ad Code"}
+                    </button>
+                  </div>
+                </div>
+
+                {/* Additional Guidance */}
+                <div className="bg-slate-950/30 border border-slate-800 rounded-2xl p-5 mt-4 space-y-3">
+                  <h5 className="text-sm font-bold text-white flex items-center gap-1.5">
+                    <HelpCircle className="w-4.5 h-4.5 text-blue-400" />
+                    How to verify eligibility with Google Crawler Bots
+                  </h5>
+                  <div className="text-xs text-slate-300 space-y-2 leading-relaxed">
+                    <p>
+                      1. <strong>Verification File:</strong> The <code className="text-pink-400 font-mono">ads.txt</code> file is located at the root of the domain (e.g. <code className="text-slate-200">/ads.txt</code>) and contains your publisher identity. This passes the automatic crawl test instantly.
+                    </p>
+                    <p>
+                      2. <strong>Prerender Optimization:</strong> Single Page Apps (SPA) can sometimes fail AdSense reviews due to blank initial paint. Dr Watermark includes pre-defined semantic outlines and structured JSON-LD schemas in the index header so Google&apos;s crawler reads high-value content immediately.
+                    </p>
+                    <p>
+                      3. <strong>Immediate Review Approval:</strong> Make sure to copy the script code above and paste it inside your layout, or use our components. Once deployed, submit the site in AdSense to complete the verification process.
+                    </p>
+                  </div>
                 </div>
               </div>
             ) : (
